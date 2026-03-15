@@ -77,7 +77,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT']."/core/classes/asset.php";
 	require_once $_SERVER['DOCUMENT_ROOT']."/core/classes/user.php";
 
-	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/core/settings.env", true);
+	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/../settings.env", true);
 	$access = $settings['asset']['ACCESSKEY'];
 	if(isset($_GET['placeid']) && isset($_GET['userid']) && isset($_GET['access'])) {
 		$place = Place::FromID(intval($_GET['placeid']));

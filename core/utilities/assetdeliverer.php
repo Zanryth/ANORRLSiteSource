@@ -38,7 +38,7 @@
 		3408
 	];
 
-	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/core/settings.env", true);
+	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/../settings.env", true);
 
 	$access = $settings['asset']['ACCESSKEY'];
 
@@ -137,7 +137,7 @@
 
 				if($asset->type == AssetType::LUA && in_array($id, $sign_ids)) {
 					$contents = "%$id%\r\n" . $contents;
-					openssl_sign($contents, $signature, file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/core/PrivateKey.pem"), OPENSSL_ALGO_SHA1);
+					openssl_sign($contents, $signature, file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/../PrivateKey.pem"), OPENSSL_ALGO_SHA1);
 					$signature = base64_encode($signature);
 					echo "%$signature%";
 				}

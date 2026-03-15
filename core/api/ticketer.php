@@ -111,7 +111,7 @@
 
 	function findAndStartOtherGame(string $year, Place|null $place = null, User|null $user = null) {
 
-		$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/core/settings.env", true);
+		$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/../settings.env", true);
 		$rcc_settings = $settings['renderer'];
 
 		$access = $settings['asset']['ACCESSKEY'];

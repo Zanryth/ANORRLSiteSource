@@ -81,7 +81,7 @@
 	function get_signature($script)
 	{
 		$signature = "";
-		openssl_sign($script, $signature, file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/core/PrivateKey.pem"), OPENSSL_ALGO_SHA1);
+		openssl_sign($script, $signature, file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/../PrivateKey.pem"), OPENSSL_ALGO_SHA1);
 		return base64_encode($signature);
 	}    
 	header("Content-Type: application/json");
@@ -137,7 +137,7 @@
 	function get_signature($script)
 	{
 		$signature = "";
-		openssl_sign($script, $signature, file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/core/PrivateKey.pem"), OPENSSL_ALGO_SHA1);
+		openssl_sign($script, $signature, file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/../PrivateKey.pem"), OPENSSL_ALGO_SHA1);
 		return base64_encode($signature);
 	}    
 	header("Content-Type: application/json");

@@ -14,18 +14,20 @@
 		require $directory.$file;
 	}
 
-	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/core/settings.env", true);
+	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/../settings.env", true);
 	
 
 
 	class TheFuckingRenderer {
 
 		public static string $arbiter_ip = "";
+		public static string $arbiter_token = "";
 		public static bool $cantuserenderer = false;
 
 		private static function RequestA(string $endpoint, array $data): ?string {
 			self::UpdateAndSetConfig();
 			$arb_ip = self::$arbiter_ip;
+			$arb_token = self::$arbiter_token;
 			$ch = curl_init("http://$arb_ip:7000" . $endpoint);//37.114.46.52
 			error_log("http://$arb_ip:7000" . $endpoint);
 
@@ -34,7 +36,7 @@
 				CURLOPT_POST => true,
 				CURLOPT_POSTFIELDS => json_encode($data),
 				CURLOPT_HTTPHEADER => [
-					"Authorization: Bearer 427803B4BD7DE917C017D5B7D9DC49CDF9E2B8BF547D1E28FC5C965FA3B3D285",
+					"Authorization: Bearer $arb_token",
 					"Content-Type: application/json",
 					"User-Agent: ANORRL/1.0"
 				],
@@ -60,7 +62,7 @@
 		}
 
 		private static function UpdateAndSetConfig() {
-			$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/core/settings.env", true);
+			$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/../settings.env", true);
 			$renderer_settings = $settings['renderer'];
 			if(self::$cantuserenderer != boolval($renderer_settings['DISABLED'])) {
 				self::$cantuserenderer = boolval($renderer_settings['DISABLED']);
@@ -68,6 +70,10 @@
 
 			if(self::$arbiter_ip != $settings['arbiter']['LOC']) {
 				self::$arbiter_ip = $settings['arbiter']['LOC'];
+			}
+
+			if(self::$arbiter_token != $settings['arbiter']['token']) {
+				self::$arbiter_token = $settings['arbiter']['token'];
 			}
 		}
 

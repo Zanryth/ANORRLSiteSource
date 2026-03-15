@@ -11,7 +11,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT']."/core/classes/renderer.php";
 	require_once $_SERVER['DOCUMENT_ROOT']."/core/utilities/userutils.php";
 
-	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/core/settings.env", true);
+	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/../settings.env", true);
 	$rcc_settings = $settings['renderer'];
 
 	$access = $settings['asset']['ACCESSKEY'];
@@ -132,6 +132,7 @@
 
 	$arbiter_ip = $settings['arbiter']['LOC']; //"37.114.46.52";
     $arbiter_pub_ip = $settings['arbiter']['PUB_LOC']; //"37.114.46.52";
+    $arbiter_token = $settings['arbiter']['token']; //"37.114.46.52";
 
 	//
 	// request=RequestGame
@@ -189,7 +190,7 @@
 						$ch = curl_init("http://$arbiter_ip:7000/api/v1/gameserver");
 
 						curl_setopt($ch, CURLOPT_HTTPHEADER, [
-							"Authorization: Bearer 427803B4BD7DE917C017D5B7D9DC49CDF9E2B8BF547D1E28FC5C965FA3B3D285",
+							"Authorization: Bearer $arbiter_token",
 							"Content-Type: application/json",
 							"User-Agent: ANORRL/1.0"
 						]);
@@ -310,7 +311,7 @@
 						$ch = curl_init("http://$arbiter_ip:7000/api/v1/gameserver");
 
 						curl_setopt($ch, CURLOPT_HTTPHEADER, [
-							"Authorization: Bearer 427803B4BD7DE917C017D5B7D9DC49CDF9E2B8BF547D1E28FC5C965FA3B3D285",
+							"Authorization: Bearer $arbiter_token",
 							"Content-Type: application/json",
 							"User-Agent: ANORRL/1.0"
 						]);
@@ -447,7 +448,7 @@
 						$ch = curl_init("http://$arbiter_ip:7000/api/v1/gameserver");
 
 						curl_setopt($ch, CURLOPT_HTTPHEADER, [
-							"Authorization: Bearer 427803B4BD7DE917C017D5B7D9DC49CDF9E2B8BF547D1E28FC5C965FA3B3D285",
+							"Authorization: Bearer $arbiter_token",
 							"Content-Type: application/json",
 							"User-Agent: ANORRL/1.0"
 						]);

@@ -1,5 +1,5 @@
 <?php
-	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/core/settings.env", true);
+	$settings = parse_ini_file($_SERVER['DOCUMENT_ROOT']."/../settings.env", true);
 
 	$database_settings = $settings['mysql'];
 
