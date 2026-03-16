@@ -343,7 +343,7 @@
 							<div id="CommentsDisabled">You need to be logged in to comment on this profile!</div>
 						</div>
 						<?php else: ?>
-						<h3>Comments (<?= $comments_count ?>)</h3>
+						<h3 style="margin-bottom: 0px">Comments (<?= $comments_count ?>)</h3>
 						<div id="CommentPostArea">
 							<?php if(isset($_SESSION['ANORRL$Comment$Post$Error'])): ?>
 							<div class="Error">Error: <?= $_SESSION['ANORRL$Comment$Post$Error'] ?></div>
