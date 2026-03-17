@@ -237,7 +237,9 @@
 				"/api/",
 				"/core/",
 				"/Admin/",
-				"/core/gamescripts/"
+				"/core/gamescripts/",
+				"/login.php",
+				"/register.php"
 			];
 
 			if($user != null) {
